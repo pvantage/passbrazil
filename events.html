@@ -49,7 +49,7 @@ jQuery(document).ready(function(){
 			//alert('finish');						
 		 },
 		 success: function(res) {  
-		   if(typeof res['events']!='undefined')
+		   if(typeof res['events']['eventlist']!='undefined')
 		   {
 				var html='';
 				var k=1;
@@ -79,6 +79,10 @@ jQuery(document).ready(function(){
 			    }
 				jQuery('.events-lists').html(html);
 				
+		   }
+		   if(typeof res['events']['noevents']!='undefined')
+		   {
+		   	jQuery('.events-lists').html('<p class="noevent">'+res['events']['noevents']+'</p>');
 		   }
 		 },  
 		 error: function(response, d, a){

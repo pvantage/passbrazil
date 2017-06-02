@@ -260,3 +260,4 @@ font-family: 'pantonbold';
 }
 
 .loading-overlay{ clear:both; padding:15px 0;}
+.events-lists p.noevent{color:#FFFFFF; padding-left:20px;}
