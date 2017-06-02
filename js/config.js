@@ -1,6 +1,6 @@
 var siteurl = "http://vantagewebtech.com/passbrazil/app";
 var realsiteurl = "http://vantagewebtech.com/passbrazil";
-alert(siteurl);
+//alert(siteurl);
 function gup(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -16,10 +16,9 @@ function gup(sParam) {
     }
 }
 
-/*
-function storecategories(store=false)
+
+function storecategories()
 {
-	
 	var url=siteurl+'/api/events';
 	
 	jQuery.ajax({  
@@ -76,13 +75,10 @@ function categories()
 	 data: {listcategory:1},  
 	 crossDomain: true,  
 	beforeSend: function() {
-		alert('start');				
 	 },		
 	 complete: function() {
-		alert('finish');						
 	 },
 	 success: function(res) {
-		 alert('process');
 	   if(typeof res['categories']!='undefined')
 	   {
 		   	var chtml='<ul>';
@@ -109,5 +105,5 @@ function categories()
    });
 		
 }
-*/
+
 
