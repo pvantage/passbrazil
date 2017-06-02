@@ -31,8 +31,47 @@ jQuery(document).ready(function(){
     if(window.XDomainRequest){contentType = "text/plain";}
 	jQuery.support.cors = true;
 	
-	categories();
+	//categories();
 	var url=siteurl+'/api/events';
+	jQuery.ajax({  
+	 type: 'POST',  
+	 url: url,  
+	 //contentType: contentType,  
+	 dataType: 'json',  
+	 data: {listcategory:1},  
+	 crossDomain: true,  
+	beforeSend: function() {
+		alert('start');				
+	 },		
+	 complete: function() {
+		alert('finish');						
+	 },
+	 success: function(res) {
+		 alert('process');
+	   if(typeof res['categories']!='undefined')
+	   {
+		   	var chtml='<ul>';
+			jQuery(res['categories']).each(function(i){
+				chtml+='<li><a href="events.html?category='+res['categories'][i]['id']+'">'+res['categories'][i]['name']+'</a></li>';		
+			});
+			chtml+='</ul>';
+			jQuery('#header .mobilenav').html(chtml);
+			
+	   }
+	 },  
+	 error: function(response, d, a){
+		jQuery('body .bodyoverlay').remove();
+		jQuery('body .popupbox').remove();
+		var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="../images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+		jQuery('body').append(html);
+		
+		jQuery('.okbox').click(function(){
+			jQuery('body .bodyoverlay').remove();
+			jQuery('body .popupbox').remove();
+		}); 
+		
+	 } 
+   });
     var category=gup('category');
 	if(typeof category!='undefined' && jQuery.trim(category)!=''){
 		
