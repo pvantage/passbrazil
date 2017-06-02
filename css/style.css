@@ -1,0 +1,262 @@
+@font-face {
+    font-family: 'pantonregular';
+    src: url('../fonts/panton-regular-webfont.woff2') format('woff2'),
+         url('../fonts/panton-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'pantonbold';
+    src: url('../fonts/panton-bold-webfont.woff2') format('woff2'),
+         url('../fonts/panton-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body{
+background-color:#000;	
+ font-family: 'pantonregular';
+}
+
+img{ max-width:100%;}
+.start-web{
+background-image:url(../images/homebg.jpg);
+background-repeat:no-repeat;
+background-position:center center;
+background-size:cover;
+background-attachment:fixed;	
+}
+a:hover,
+a:focus
+{ text-decoration:none;}
+
+
+.middle-logo{
+position:absolute;
+left:0;
+top:50%;
+transform:translate(0,-50%);
+-moz-transform:translate(0,-50%);
+-ms-transform:translate(0,-50%);
+-o-transform:translate(0,-50%);
+-webkit-transform:translate(0,-50%);
+width:100%;
+text-align:center;	
+}
+
+#header{
+background-color:#000;
+padding:15px;
+width:100%;
+float:left;	
+}
+
+.header-logo{ text-align:center;}
+
+.header-logo img{ height:43px;}
+
+.event-banner{ clear:both; position:relative;}
+
+.event-banner img{ width:100%; height:auto;}
+
+.container{ max-width:640px; width:auto; padding:0px;}
+
+.events-lists table.table{ border:none; margin:0px; font-family: 'pantonregular'; background-color:#fff;}
+
+.events-lists table.table td{ vertical-align:middle; border:none; padding:5px;}
+.events-lists table.table td span{ display:block;}
+
+.events-lists table.table td.event-date{ background-color:#133ed0; color:#fff; border-right:3px solid #d1d1d1; font-size:20px; text-align:center; font-weight:bold; line-height:normal;}
+.events-lists table.table td.event-date a{ color:#fff;}
+.month-name{ font-size:15px;}
+
+.events-lists table.table td.event-detail{ font-size:15px; font-weight: bold; color:#282828; }
+.events-lists table.table td.event-detail a{ color:#282828;}
+.events-lists table.table td.event-detail .event-loc{ font-size:17px; color:#0457a5;}
+
+.events-lists table.table td.event-img{ padding:0px;}
+.events-lists table.table td.event-img img{ width:100%; height:auto;}
+
+.event-grid ul { padding:0px; margin:0px; list-style:none;}
+.event-grid ul li{ width:50%; float:left;}
+
+.event-grid table.table td.event-date{ font-size:20px;}
+
+.event-grid table.table td .month-name{ font-size:15px;}
+
+.event-grid table.table td.event-detail{ font-size:14px;}
+
+.event-grid table.table td.event-detail .event-loc{ font-size:15px;}
+
+.bottom-banner { border-top:3px solid #000; text-align:center; clear:both;}
+
+.bottom-banner img{ width:100%; height:auto;}
+
+.event-grid{ clear:both;}
+
+.event-date-meta{ position:absolute; left:0px;
+bottom:0px;
+width:70px;
+
+background-color:#123bdb;
+padding:7px 10px;
+color:#fff;
+text-align:center;
+font-size:25px;
+line-height:normal;
+
+}
+.event-detail-wrap{ clear:both; background-color:#fff;}
+.event-date-meta span{ display:block; font-size:17px;}
+
+h2.event-title{
+ font-size:23px;
+ color:#282828;
+ border-bottom:1px solid #acacac;
+ padding:15px;
+ font-family: 'pantonbold';
+ margin-bottom:0px;
+ 	
+}
+
+.event-info-detail{ padding:10px 15px; color:#282828; line-height:28px;}
+.event-info-detail .loc-name{font-family: 'pantonbold'; color:#666666;}
+.blue-color{ color:#1448a9!important;}
+.event-price-list{
+background-color:#e0e0e0;
+border-top:1px solid #acacac;
+text-align:center;	
+}
+.event-price-list ul{ padding:0px; margin:0px; list-style:none;}
+.event-price-list ul li{ display:inline-block; vertical-align:top; clear:#282828; font-size:18px; padding:10px;}
+.event-price-list ul li.vip{ background-color:#efefef; border-left:1px solid #fff; border-right:1px solid #fff;}
+.event-price-list ul li a{ color:#282828;}
+.event-price-list .price{ color:#186e18; font-family: 'pantonbold'; }
+.event-spnsr h2{
+font-family: 'pantonbold';
+font-size:25px;
+text-transform:uppercase;
+background-color:#238c23;
+padding:15px 10px;
+text-align:center;
+color:#fff;
+margin:0px;	
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#166a16+0,238d23+100 */
+background: #166a16; /* Old browsers */
+background: -moz-linear-gradient(45deg, #166a16 0%, #238d23 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg, #166a16 0%,#238d23 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg, #166a16 0%,#238d23 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#166a16', endColorstr='#238d23',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+.event-spnsr h2 a{
+color:#fff;	
+}
+
+.logos-slider{ padding:15px;}
+.owl-carousel .item{ border:1px solid #d7d7d7;}
+
+
+
+.modal-backdrop{
+background-color:#041d34;
+opacity:1;	
+}
+.modal-backdrop.show{
+opacity:1;	
+}
+
+.modal.modal-fullscreen .modal-dialog {
+   margin-top:0px;
+   margin-bottom:0px;
+    max-width: 640px;
+}
+
+.modal.modal-fullscreen .modal-content{ border-radius:0px;
+border:none;
+background-color:#041d34;
+color:#fff;
+
+}
+.modal.modal-fullscreen .modal-header{ border:none; padding-bottom:0px;}
+.modal.modal-fullscreen button.close{
+color: #b4bcc2;
+    font-size: 40px;
+    font-weight: normal;
+    text-shadow: none;	
+}
+
+.popupform .form-group{
+	margin-bottom:8px;
+}
+.popupform h4{ margin-bottom:15px;}
+
+.popupform .form-control{ border-radius:6px;
+padding: 0.6rem 0.75rem;
+}
+
+.popupform .submit-btn .btn.btn-success{
+padding: 0.6rem 0.75rem;
+width:100%;
+text-align:center;
+border-radius:6px;
+text-transform:uppercase;
+font-size:18px;
+cursor:pointer;
+background-color:#27b11c;	
+}
+
+.popupform ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #000;
+  opacity:1;
+}
+.popupform ::-moz-placeholder { /* Firefox 19+ */
+  color: #000;
+  opacity:1;
+}
+.popupform :-ms-input-placeholder { /* IE 10+ */
+  color: #000;
+  opacity:1;
+}
+.popupform :-moz-placeholder { /* Firefox 18- */
+  color: #000;
+  opacity:1;
+}
+
+.popupaddress{ padding-top:30px;}
+
+.popupsuccessmsg{
+border:1px solid #506171;
+border-radius:5px;
+text-align:center;
+text-transform:uppercase;
+padding:50px 15px;	
+}
+
+.popupsuccessmsg .check-icon{ margin-bottom:15px;}
+
+.event-img a{
+ display:block;
+ height:150px;
+ overflow:hidden;	
+}
+
+.events-lists table.table td.event-img a img{
+height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;	
+}
+
+.btn.btn-danger.loadmore{ display:block; margin:0; border-radius:0px;
+
+background-color:#166a16;
+border:none;
+padding:10px;
+text-transform:uppercase; 
+font-family: 'pantonbold';
+}
+
+.loading-overlay{ clear:both; padding:15px 0;}
