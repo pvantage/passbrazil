@@ -29,11 +29,10 @@ function storecategories(store=false)
 	 data: {listcategory:1},  
 	 crossDomain: true,  
 	 beforeSend: function() {
-							
+						
 	 },		
 	 complete: function() {
-		jQuery('body .bodyoverlay').remove();
-		jQuery('body .preloader').remove();					
+							
 	 },
 	 success: function(res) {  
 	   if(typeof res['categories']!='undefined')
@@ -79,8 +78,7 @@ function categories()
 							
 	 },		
 	 complete: function() {
-		jQuery('body .bodyoverlay').remove();
-		jQuery('body .preloader').remove();					
+							
 	 },
 	 success: function(res) {  
 	   if(typeof res['categories']!='undefined')
@@ -109,13 +107,5 @@ function categories()
    });
 		
 }
-var path = window.location.pathname;
-var page = path.split("/").pop();
-if(jQuery.trim(page)=='' || jQuery.trim(page)=='index.html')
-{
-	storecategories(true);
-	setTimeout(function(){window.location='events.html';},2000);
-}
-else{
-	categories();
-}
+
+categories();
