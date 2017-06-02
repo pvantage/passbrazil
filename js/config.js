@@ -1,5 +1,6 @@
 var siteurl = "http://vantagewebtech.com/passbrazil/app";
 var realsiteurl = "http://vantagewebtech.com/passbrazil";
+alert(siteurl);
 function gup(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -15,7 +16,7 @@ function gup(sParam) {
     }
 }
 
-
+/*
 function storecategories(store=false)
 {
 	
@@ -108,5 +109,5 @@ function categories()
    });
 		
 }
-
+*/
 
