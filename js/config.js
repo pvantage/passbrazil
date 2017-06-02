@@ -74,13 +74,14 @@ function categories()
 	 dataType: 'json',  
 	 data: {listcategory:1},  
 	 crossDomain: true,  
-	 beforeSend: function() {
-							
+	beforeSend: function() {
+		alert('start');				
 	 },		
 	 complete: function() {
-							
+		alert('finish');						
 	 },
-	 success: function(res) {  
+	 success: function(res) {
+		 alert('process');
 	   if(typeof res['categories']!='undefined')
 	   {
 		   	var chtml='<ul>';
@@ -108,4 +109,4 @@ function categories()
 		
 }
 
-categories();
+
