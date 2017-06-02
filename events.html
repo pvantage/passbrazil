@@ -32,10 +32,10 @@ jQuery(document).ready(function(){
 	
 	categories();
 	var category=gup('category');
-	alert(category);
+	
     
 	if(typeof category!='undefined' && jQuery.trim(category)!=''){
-		
+		alert(category);
 		jQuery.ajax({  
 		 type: 'POST',  
 		 url: url,  
@@ -44,11 +44,10 @@ jQuery(document).ready(function(){
 		 data: {listevents:1,category:category},  
 		 crossDomain: true,  
 		 beforeSend: function() {
-								
+			alert('start');				
 		 },		
 		 complete: function() {
-			jQuery('body .bodyoverlay').remove();
-			jQuery('body .preloader').remove();					
+			alert('finish');						
 		 },
 		 success: function(res) {  
 		   if(typeof res['events']!='undefined')
