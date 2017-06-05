@@ -131,7 +131,7 @@ border-top:1px solid #acacac;
 text-align:center;	
 }
 .event-price-list ul{ padding:0px; margin:0px; list-style:none;}
-.event-price-list ul li{ display:inline-block; vertical-align:top; clear:#282828; font-size:18px; padding:10px;}
+.event-price-list ul li{ display:inline-block; vertical-align:top; clear:#282828; font-size:18px; padding:10px 0px; width:33%;}
 .event-price-list ul li.vip{ background-color:#efefef; border-left:1px solid #fff; border-right:1px solid #fff;}
 .event-price-list ul li a{ color:#282828;}
 .event-price-list .price{ color:#186e18; font-family: 'pantonbold'; }
@@ -261,3 +261,4 @@ font-family: 'pantonbold';
 
 .loading-overlay{ clear:both; padding:15px 0;}
 .events-lists p.noevent{color:#FFFFFF; padding-left:20px;}
+.error{color:#FF0000;}

@@ -101,6 +101,7 @@
   width: 100%;
    font-family: 'pantonregular';
    display:block;
+   text-transform:uppercase;
 }
 .mobilenav li a:hover{ color:#fff000;}
 

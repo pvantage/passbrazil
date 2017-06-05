@@ -89,23 +89,33 @@ jQuery(document).ready(function(){
 			html+='</div>';
 			jQuery('.event-detail-wrap').html(html);
 			setTimeout(function(){
-				$('.owl-carousel').owlCarousel({
-					loop:true,
-					margin:10,
-					nav:false,
-					responsive:{
-						0:{
-							items:4
-						},
-						600:{
-							items:4
-						},
-						1000:{
-							items:4
+				if(parseInt(jQuery('.owl-carousel .item').size())>3)
+				{
+					$('.owl-carousel').owlCarousel({
+						loop:true,
+						margin:10,
+						nav:false,
+						responsive:{
+							0:{
+								items:4
+							},
+							600:{
+								items:4
+							},
+							1000:{
+								items:4
+							}
 						}
-					}
-				});
+					});
+				}
+				else
+				{
+					jQuery('.owl-carousel .item').css({'border':'none', 'text-align':'center'});
+					if(parseInt(jQuery('.owl-carousel .item').size())>1){jQuery('.owl-carousel .item').css({'display':'inline'});}
+					jQuery('.owl-carousel').show();
+				}
 			},1000);
+				
 	   }
 	 },  
 	 error: function(response, d, a){
@@ -154,7 +164,11 @@ jQuery(document).ready(function(){
 					}
 					else if(typeof res['events']['errors']!='undefined')
 					{
-						
+						var er='';
+						jQuery(res['events']['errors']).each(function(index){
+							er+='<span class="error">'+res['events']['errors'][index]+'</span><br />';
+						});
+						jQuery('.showerrormsg').html(er);
 					}
 					return false;
 			   }
@@ -241,6 +255,7 @@ jQuery(document).ready(function(){
                 
                 <div class="popupform">
                     <h4>cadastr-se / divulgue seu evento</h4>
+					<div class="showerrormsg"></div>
                     <form id="register" name="register" action="" method="post">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control required" placeholder="NOME COMPLETO">
