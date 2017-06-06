@@ -233,6 +233,9 @@ jQuery(document).ready(function(){
 	jQuery('#myModal .modal-header button.close').click(function(){
 		jQuery('.popupform').show();
 		jQuery('.popupsuccessmsg').hide();
+		if(typeof category=='undefined' || jQuery.trim(category)==''){
+			window.location="";
+		}
 	});
 	
 });
