@@ -36,6 +36,13 @@ jQuery(document).ready(function(){
 	
     var url=siteurl+'/api/events';
 	if(typeof category!='undefined' && jQuery.trim(category)!=''){
+		setTimeout(function(){
+			jQuery('.mobilenav ul li a').each(function(){
+				if(jQuery(this).attr('href')=='events.html?category='+category){
+					jQuery(this).addClass('current');
+				}
+			});
+		},1500);
 		jQuery.ajax({  
 		 type: 'POST',  
 		 url: url,  

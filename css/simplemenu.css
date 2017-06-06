@@ -103,6 +103,6 @@
    display:block;
    text-transform:uppercase;
 }
-.mobilenav li a:hover{ color:#fff000;}
+.mobilenav li a:hover, .mobilenav li a.current{ color:#fff000;}
 
 .mobilenav li:first-child { margin-top: 50px; }
