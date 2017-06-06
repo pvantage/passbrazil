@@ -64,7 +64,7 @@ float:left;
 
 .container{ max-width:640px; width:auto; padding:0px;}
 
-.events-lists table.table{ border:none; margin:0px; font-family: 'pantonregular'; background-color:#fff;}
+.events-lists table.table{ border:none; margin:0px; font-family: 'pantonbold'; background-color:#fff;}
 
 .events-lists table.table td{ vertical-align:middle; border:none; padding:5px;}
 .events-lists table.table td span{ display:block;}
