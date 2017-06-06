@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'pantonregular';
-    src: url('../fonts/panton-regular-webfont.woff2') format('woff2'),
-         url('../fonts/panton-regular-webfont.woff') format('woff');
+    src: url('../fonts/panton-regular-webfont.woff2') format('opentype'),
+         url('../fonts/panton-regular-webfont.woff') format('opentype');
     font-weight: normal;
     font-style: normal;
 
@@ -10,8 +10,8 @@
 
 @font-face {
     font-family: 'pantonbold';
-    src: url('../fonts/panton-bold-webfont.woff2') format('woff2'),
-         url('../fonts/panton-bold-webfont.woff') format('woff');
+    src: url('../fonts/panton-bold-webfont.woff2') format('opentype'),
+         url('../fonts/panton-bold-webfont.woff') format('opentype');
     font-weight: normal;
     font-style: normal;
 
