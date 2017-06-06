@@ -77,7 +77,7 @@ jQuery(document).ready(function(){
 			jQuery(res['events']['detail']).each(function(i){
 				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span>'+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horario:</span>'+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereco:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"> '+res['events']['detail'][i]['venue']+'</span> </div><div class="event-price-list"><ul><li><a href="#"><span class="price">'+res['events']['detail'][i]['price_pista']+'</span> | Pista</a></li><li class="vip"><a href="#"><span class="price">'+res['events']['detail'][i]['price_vip']+'</span> | VIP </a></li><li><a href="#"><span class="price">'+res['events']['detail'][i]['price_cam']+'</span> | CAM </a></li></ul></div>';
 			});
-			html+='<div class="event-spnsr"><h2><a href="javascript:;" data-toggle="modal" data-target="#myModal">comprar ingresso</a></h2>';
+			html+='<div class="event-spnsr"><h2><a href="http://www.brazucatickets.com">comprar ingresso</a></h2>';
 			if(typeof res['events']['sponsors']!='undefined')
 	   		{
 				html+='<div class="logos-slider"><div class="owl-carousel">';
@@ -145,7 +145,7 @@ jQuery(document).ready(function(){
 			 url: url,  
 			 //contentType: contentType,  
 			 dataType: 'json',  
-			 data: {register:1, event_id:event_id, fullname:fullname, email:email, city:city},  
+			 data: {register:1, fullname:fullname, email:email, city:city},  
 			 crossDomain: true,  
 			 beforeSend: function() {
 			 },		
@@ -161,6 +161,7 @@ jQuery(document).ready(function(){
 						jQuery('.popupform').hide();
 						jQuery('.popupsuccessmsg').show();
 						jQuery('#register')[0].reset();
+						jQuery('.showerrormsg').html('');
 					}
 					else if(typeof res['events']['errors']!='undefined')
 					{
@@ -210,35 +211,7 @@ jQuery(document).ready(function(){
 </header>
 <div class="container">
     <div class="event-detail-wrap">
-        <!--<div class="event-banner"><img src="images/event-banner2.jpg" alt="">
-            <div class="event-date-meta"> <span class="month-name"> DEC</span> 08 </div>
-        </div>
-        <h2 class="event-title">Jorge &amp; Matheus Tour 2017</h2>
-        <div class="event-info-detail"> <span class="loc-name">Quando:</span> Saturday, September 8 <br>
-            <span class="loc-name">Horario:</span> 3 PM - 5 PM EDT <br>
-            <span class="loc-name">Endereco:</span> 168 McWhorter St, Newark, <br>
-            <span class="loc-name">Cidade:</span> New Jersey, 07105 <br>
-            <span class="loc-name blue-color">Local:</span> <span class="blue-color"> Delicias De Minas Bar</span> </div>
-        <div class="event-price-list">
-            <ul>
-                <li><a href="#"><span class="price">$25</span> | Pista</a></li>
-                <li class="vip"><a href="#"><span class="price">$50</span> | VIP </a></li>
-                <li><a href="#"><span class="price">$150</span> | CAM </a></li>
-            </ul>
-        </div>
-        <div class="event-spnsr">
-            <h2>comprar ingresso</h2>
-            <div class="logos-slider">
-                <div class="owl-carousel">
-                    <div class="item"><img src="images/logo1.jpg" alt=""></div>
-                    <div class="item"><img src="images/logo2.jpg" alt=""></div>
-                    <div class="item"><img src="images/logo3.jpg" alt=""></div>
-                    <div class="item"><img src="images/logo4.jpg" alt=""></div>
-                    <div class="item"><img src="images/logo1.jpg" alt=""></div>
-                    <div class="item"><img src="images/logo2.jpg" alt=""></div>
-                </div>
-            </div>
-        </div>-->
+        
     </div>
 </div>
 <div class="modal fade modal-fullscreen" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">

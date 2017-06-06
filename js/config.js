@@ -41,6 +41,7 @@ function storecategories()
 			jQuery(res['categories']).each(function(i){
 				html+='<li><a href="events.html?category='+res['categories'][i]['id']+'">'+res['categories'][i]['name']+'</a></li>';		
 			});
+			html+='<li><a href="javascript:;" data-toggle="modal" data-target="#myModal">Register</a></li>';
 			html+='</ul>';
 			
 			localStorage.setItem('categorilist', html);	
@@ -85,8 +86,12 @@ function categories()
 			jQuery(res['categories']).each(function(i){
 				chtml+='<li><a href="events.html?category='+res['categories'][i]['id']+'">'+res['categories'][i]['name']+'</a></li>';		
 			});
+			chtml+='<li><a href="javascript:;" data-toggle="modal" data-target="#myModal">Register</a></li>';
 			chtml+='</ul>';
 			jQuery('#header .mobilenav').html(chtml);
+			jQuery('#header .header-logo a.icon').click(function(){
+				jQuery('#myModal .modal-header button.close').trigger('click');													 
+			});
 			
 	   }
 	 },  
@@ -105,5 +110,3 @@ function categories()
    });
 		
 }
-
-

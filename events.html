@@ -17,8 +17,9 @@
 
 <script src="js/jquery.js"></script> 
 <!-- Include all compiled plugins (below), or include individual files as needed --> 
-<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="js/simplemenu.js"> </script>
+<script src="js/validate.js"></script>
 <script src="js/config.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function(){
@@ -171,6 +172,69 @@ jQuery(document).ready(function(){
 	{
 		jQuery('#header .header-logo a.icon').trigger('click');
 	}
+	jQuery('#register').validate();
+	jQuery('#register').submit(function(){
+		if(jQuery('#register').valid())
+		{
+			var fullname=jQuery('input[name="name"]').val();
+			var email=jQuery('input[name="email"]').val();
+			var city=jQuery('input[name="city"]').val();
+			jQuery.ajax({  
+			 type: 'POST',  
+			 url: url,  
+			 //contentType: contentType,  
+			 dataType: 'json',  
+			 data: {register:1, fullname:fullname, email:email, city:city},  
+			 crossDomain: true,  
+			 beforeSend: function() {
+			 },		
+			 complete: function() {
+									
+			 },
+			 success: function(res) { 
+			 	
+			   if(typeof res['events']!='undefined')
+			   {
+			   		if(typeof res['events']['success']!='undefined')
+			   		{
+						jQuery('.popupform').hide();
+						jQuery('.popupsuccessmsg').show();
+						jQuery('#register')[0].reset();
+						jQuery('.showerrormsg').html('');
+					}
+					else if(typeof res['events']['errors']!='undefined')
+					{
+						var er='';
+						jQuery(res['events']['errors']).each(function(index){
+							er+='<span class="error">'+res['events']['errors'][index]+'</span><br />';
+						});
+						jQuery('.showerrormsg').html(er);
+					}
+					return false;
+			   }
+			   return false;
+			 },  
+			 error: function(response, d, a){
+				jQuery('body .bodyoverlay').remove();
+				jQuery('body .popupbox').remove();
+				var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="../images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+				jQuery('body').append(html);
+				
+				jQuery('.okbox').click(function(){
+					jQuery('body .bodyoverlay').remove();
+					jQuery('body .popupbox').remove();
+				}); 
+				
+			 } 
+		   });
+		}
+		return false;
+	});
+	jQuery('#myModal .modal-header button.close').click(function(){
+		jQuery('.popupform').show();
+		jQuery('.popupsuccessmsg').hide();
+	});
+	
 });
 </script>
 </head>
@@ -187,67 +251,57 @@ jQuery(document).ready(function(){
 <div class="container">
     
     <div class="events-lists">
-		<!--<div class="event-banner"><a href=""><img src="images/event-banner.jpg" alt=""></a> </div>
-        <table class="table">
-            <tr>
-                <td width="70" class="event-date"><a href="#"><span class="month-name">DEC</span> 08 </a></td>
-                <td class="event-detail"><a href="#"><span class="event-name">Luan Santana</span> <span class="event-loc"> Newark, NJ</span></a></td>
-            </tr>
-        </table>
-        <div class="event-grid">
-            <ul>
-                <li>
-                    <table class="table">
-                        <tr>
-                            <td class="event-img" colspan="2"><a href="#"><img src="images/img01.jpg" alt=""></a></td>
-                        </tr>
-                        <tr>
-                            <td width="60" class="event-date"><a href="#"><span class="month-name">DEC</span> 08 </a></td>
-                            <td class="event-detail"><a href="#"><span class="event-name">Jorge &amp; Matheus</span> <span class="event-loc"> Newark, NJ</span></a></td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <table class="table">
-                        <tr>
-                            <td class="event-img" colspan="2"><a href="#"><img src="images/img02.jpg" alt=""></a></td>
-                        </tr>
-                        <tr>
-                            <td width="60" class="event-date"><a href="#"><span class="month-name">AGO</span> 22 </a></td>
-                            <td class="event-detail"><a href="#"><span class="event-name">Luan Santana</span> <span class="event-loc"> Newark, NJ</span></a></td>
-                        </tr>
-                    </table>
-                </li>
-            </ul>
-        </div>
-        <div class="event-grid">
-            <ul>
-                <li>
-                    <table class="table">
-                        <tr>
-                            <td class="event-img" colspan="2"><a href="#"><img src="images/img03.jpg" alt=""></a></td>
-                        </tr>
-                        <tr>
-                            <td width="60" class="event-date"><a href="#"><span class="month-name">ABR</span> 29 </a></td>
-                            <td class="event-detail"><a href="#"><span class="event-name">Jorge &amp; Matheus</span> <span class="event-loc"> Newark, NJ</span></a></td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <table class="table">
-                        <tr>
-                            <td class="event-img" colspan="2"><a href="#"><img src="images/img04.jpg" alt=""></a></td>
-                        </tr>
-                        <tr>
-                            <td width="60" class="event-date"><a href="#"><span class="month-name">SET</span> 20 </a></td>
-                            <td class="event-detail"><a href="#"><span class="event-name">Jorge &amp; Matheus</span> <span class="event-loc"> Newark, NJ</span></a></td>
-                        </tr>
-                    </table>
-                </li>
-            </ul>
-        </div>-->
+		
     </div>
 </div>
-
+<div class="modal fade modal-fullscreen" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body"> 
+                <div class="popupsuccessmsg" style="display:none;">
+            <div class="check-icon"><img src="images/check-icon.png" alt=""></div>
+            bem-vindo ao passbrazil
+            </div>
+                
+                <div class="popupform">
+                    <h4>cadastr-se / divulgue seu evento</h4>
+					<div class="showerrormsg"></div>
+                    <form id="register" name="register" action="" method="post">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-control required" placeholder="NOME COMPLETO">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control required email" name="email" placeholder="E-MAIL">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control required" name="city" placeholder="SUA CIDADE">
+                        </div>
+                        <div class="submit-btn">
+                            <button type="submit" class="btn btn-success">cadastrar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="popupaddress"> <img src="images/start-logo.png" alt=""> <br>
+                    <br>
+                    PassBrazil é um serviço pertencente <br>
+                    a RC Marketing and Design <br>
+                    <br>
+                    <strong>Fale Conosco</strong> <br>
+                    (832) 955-6260 <br>
+                    Rodrigo CustodioNovos Negócios <br>
+                    <br>
+                    (281) 903-0037<br>
+                    Lydia Pinto<br>
+                    Produção e Comunicação <br>
+                    <br>
+                    <strong>info@passbrazil.com</strong><br>
+                    passbrazil.com / Social Media: @passbrazil </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
