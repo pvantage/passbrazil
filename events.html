@@ -39,10 +39,18 @@ jQuery(document).ready(function(){
 		setTimeout(function(){
 			jQuery('.mobilenav ul li a').each(function(){
 				if(jQuery(this).attr('href')=='events.html?category='+category){
+					jQuery('.mobilenav ul li a').removeClass('current');
 					jQuery(this).addClass('current');
 				}
 			});
 		},1500);
+	}
+	else
+	{
+		jQuery('#header .header-logo a.icon').trigger('click');
+		category=0;
+	}
+	
 		jQuery.ajax({  
 		 type: 'POST',  
 		 url: url,  
@@ -174,11 +182,7 @@ jQuery(document).ready(function(){
 				 } 
 			   });
 		});
-	}
-	else
-	{
-		jQuery('#header .header-logo a.icon').trigger('click');
-	}
+	
 	jQuery('#register').validate();
 	jQuery('#register').submit(function(){
 		if(jQuery('#register').valid())
@@ -250,7 +254,7 @@ jQuery(document).ready(function(){
 </head>
 <body>
 <header id="header">
-    <div class="header-logo"><img src="images/start-logo.png" alt=""> <a href="javascript:void(0)" class="icon">
+    <div class="header-logo"><a href="events.html"><img src="images/start-logo.png" alt=""></a> <a href="javascript:void(0)" class="icon">
         <div class="hamburger">
             <div class="menui top-menu"></div>
             <div class="menui mid-menu"></div>
@@ -258,6 +262,7 @@ jQuery(document).ready(function(){
         </div>
         </a> </div><div class="mobilenav"><script type="text/javascript">document.write(localStorage.getItem('categorilist'));</script></div>
 </header>
+<div class="clearfix"></div>
 <div class="container">
     
     <div class="events-lists">
@@ -277,7 +282,7 @@ jQuery(document).ready(function(){
             </div>
                 
                 <div class="popupform">
-                    <h4>cadastr-se / divulgue seu evento</h4>
+                    <h4>Cadastre-se Grátis no Clube PassBrazil</h4>
 					<div class="showerrormsg"></div>
                     <form id="register" name="register" action="" method="post">
                         <div class="form-group">

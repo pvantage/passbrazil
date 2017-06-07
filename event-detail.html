@@ -75,7 +75,7 @@ jQuery(document).ready(function(){
 	   {
 			var html='';
 			jQuery(res['events']['detail']).each(function(i){
-				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span>'+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horario:</span>'+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereco:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"> '+res['events']['detail'][i]['venue']+'</span> </div><div class="event-price-list"><ul><li><a href="#"><span class="price">'+res['events']['detail'][i]['price_pista']+'</span> | Pista</a></li><li class="vip"><a href="#"><span class="price">'+res['events']['detail'][i]['price_vip']+'</span> | VIP </a></li><li><a href="#"><span class="price">'+res['events']['detail'][i]['price_cam']+'</span> | CAM </a></li></ul></div>';
+				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horario:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereco:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"> '+res['events']['detail'][i]['venue']+'</span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><a href="javascript:;"><span class="price"><img src="images/appicon.png" alt=""> Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</a></li></ul></div>';
 			});
 			html+='<div class="event-spnsr"><h2><a href="http://www.brazucatickets.com">comprar ingresso</a></h2>';
 			if(typeof res['events']['sponsors']!='undefined')
@@ -86,24 +86,31 @@ jQuery(document).ready(function(){
 				});
 				html+='</div></div>';
 			}
+			
 			html+='</div>';
+			if(res['events']['detail'][0]['poster']!=''){
+				html+='<div class="event-poster"><img src="'+res['events']['detail'][0]['poster']+'" alt=""></div>';
+			}
 			jQuery('.event-detail-wrap').html(html);
 			setTimeout(function(){
-				if(parseInt(jQuery('.owl-carousel .item').size())>3)
+				if(parseInt(jQuery('.owl-carousel .item').size())>1)
 				{
 					$('.owl-carousel').owlCarousel({
 						loop:true,
+						autoplay:true,
+						autoplayTimeout:1500,
+    					autoplayHoverPause:true,
 						margin:10,
 						nav:false,
 						responsive:{
 							0:{
-								items:4
+								items:2
 							},
 							600:{
-								items:4
+								items:2
 							},
 							1000:{
-								items:4
+								items:2
 							}
 						}
 					});
@@ -200,7 +207,7 @@ jQuery(document).ready(function(){
 </head>
 <body>
 <header id="header">
-    <div class="header-logo"><img src="images/start-logo.png" alt=""> <a href="javascript:void(0)" class="icon">
+    <div class="header-logo"><a href="events.html"><img src="images/start-logo.png" alt=""></a> <a href="javascript:void(0)" class="icon">
         <div class="hamburger">
             <div class="menui top-menu"></div>
             <div class="menui mid-menu"></div>
@@ -209,6 +216,7 @@ jQuery(document).ready(function(){
         </a> </div>
     <div class="mobilenav"><script type="text/javascript">document.write(localStorage.getItem('categorilist'));</script></div>
 </header>
+<div class="clearfix"></div>
 <div class="container">
     <div class="event-detail-wrap">
         
@@ -227,7 +235,7 @@ jQuery(document).ready(function(){
             </div>
                 
                 <div class="popupform">
-                    <h4>cadastr-se / divulgue seu evento</h4>
+                    <h4>Cadastre-se Grátis no Clube PassBrazil</h4>
 					<div class="showerrormsg"></div>
                     <form id="register" name="register" action="" method="post">
                         <div class="form-group">

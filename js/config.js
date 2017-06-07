@@ -38,6 +38,7 @@ function storecategories()
 	   if(typeof res['categories']!='undefined')
 	   {
 		   	var html='<ul>';
+			html+='<li><a href="javascript:;" class="current">TODOS</a></li>';
 			jQuery(res['categories']).each(function(i){
 				html+='<li><a href="events.html?category='+res['categories'][i]['id']+'">'+res['categories'][i]['name']+'</a></li>';		
 			});
@@ -83,6 +84,7 @@ function categories()
 	   if(typeof res['categories']!='undefined')
 	   {
 		   	var chtml='<ul>';
+			chtml+='<li><a href="events.html?category=0" class="current">TODOS</a></li>';
 			jQuery(res['categories']).each(function(i){
 				chtml+='<li><a href="events.html?category='+res['categories'][i]['id']+'">'+res['categories'][i]['name']+'</a></li>';		
 			});
