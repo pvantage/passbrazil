@@ -75,9 +75,14 @@ jQuery(document).ready(function(){
 	   {
 			var html='';
 			jQuery(res['events']['detail']).each(function(i){
-				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horario:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereco:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"> '+res['events']['detail'][i]['venue']+'</span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><a href="javascript:;"><span class="price"><img src="images/appicon.png" alt=""> Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</a></li></ul></div>';
+				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horário:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereço:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"><a href="'+res['events']['detail'][i]['site_url']+'/events/gmap?address='+res['events']['detail'][i]['venue']+'" class="venuedetail"> '+res['events']['detail'][i]['venue']+'</a></span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><a href="javascript:;"><span class="price"><img src="images/appicon.png" alt=""> Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</a></li></ul></div>';
 			});
-			html+='<div class="event-spnsr"><h2><a href="http://www.brazucatickets.com">comprar ingresso</a></h2>';
+			if(typeof res['events']['detail'][0]['ticket_url']!='undefined' && res['events']['detail'][0]['ticket_url']!=''){
+				html+='<div class="event-spnsr"><h2><a href="'+res['events']['detail'][0]['ticket_url']+'">comprar ingresso</a></h2>';
+			}
+			else{
+				html+='<div class="event-spnsr"><h2>comprar ingresso</h2>';
+			}
 			if(typeof res['events']['sponsors']!='undefined')
 	   		{
 				html+='<div class="logos-slider"><div class="owl-carousel">';
@@ -88,10 +93,14 @@ jQuery(document).ready(function(){
 			}
 			
 			html+='</div>';
-			if(res['events']['detail'][0]['poster']!=''){
+			if(typeof res['events']['detail'][0]['poster']!='undefined' && res['events']['detail'][0]['poster']!=''){
 				html+='<div class="event-poster"><img src="'+res['events']['detail'][0]['poster']+'" alt=""></div>';
 			}
 			jQuery('.event-detail-wrap').html(html);
+			jQuery('a.venuedetail').click(function(){
+				cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+				return false;
+			});
 			setTimeout(function(){
 				if(parseInt(jQuery('.owl-carousel .item').size())>1)
 				{

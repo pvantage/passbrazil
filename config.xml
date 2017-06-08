@@ -20,7 +20,7 @@
 	
 	
 	
-	
+	<plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />	
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
 	<icon src="icons/android.jpg" gap:platform="android" gap:density="ldpi" />
 	<icon src="icons/android.jpg" gap:platform="android" gap:density="mdpi" />
