@@ -38,6 +38,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/simplemenu.js"> </script>
 <script src="js/validate.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova.js"></script>
 <script src="js/config.js"></script> 
 <script src="js/owl.carousel.js"></script> 
 <script type="text/javascript">
@@ -98,6 +99,7 @@ jQuery(document).ready(function(){
 			}
 			jQuery('.event-detail-wrap').html(html);
 			jQuery('a.venuedetail').click(function(){
+				alert(jQuery(this).attr('href'));
 				cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
 				return false;
 			});
