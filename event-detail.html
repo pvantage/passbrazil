@@ -99,8 +99,7 @@ jQuery(document).ready(function(){
 			}
 			jQuery('.event-detail-wrap').html(html);
 			jQuery('a.venuedetail').click(function(){
-				alert(jQuery(this).attr('href'));
-				cordova.InAppBrowser.open(jQuery(this).attr('href'),'_blank','location=no');
+				cordova.InAppBrowser.open(jQuery(this).attr('href'),'_self','location=yes');
 				return false;
 			});
 			setTimeout(function(){
