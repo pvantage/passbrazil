@@ -1,4 +1,4 @@
-var siteurl = "http://passbrazil.com";
+var siteurl = "http://passbrazil.com/app";
 //alert(siteurl);
 function gup(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
