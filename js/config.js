@@ -1,5 +1,4 @@
-var siteurl = "http://vantagewebtech.com/passbrazil/app";
-var realsiteurl = "http://vantagewebtech.com/passbrazil";
+var siteurl = "http://passbrazil.com";
 //alert(siteurl);
 function gup(sParam) {
   var sPageURL = decodeURIComponent(window.location.search.substring(1)),
