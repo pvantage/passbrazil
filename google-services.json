@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "315537388956",
+    "firebase_url": "https://passbrazil-special-events.firebaseio.com",
+    "project_id": "passbrazil-special-events",
+    "storage_bucket": "passbrazil-special-events.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315537388956:android:a1fc2536a0952d78",
+        "android_client_info": {
+          "package_name": "passbrazil.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "315537388956-4k8h85jg045o43itkd2p6bplnjs8bf4h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0-DVTnQXrbG1sVRbI136eOaHpiyWhJIY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
