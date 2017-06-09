@@ -21,12 +21,18 @@
 	
 	<plugin name="cordova-plugin-device" spec="~1.1.6" />
 	<!--<plugin name="phonegap-plugin-push" source="npm" />-->
-	<!--<platform name="android">
-	  <resource-file src="google-services.json" target="google-services.json" />
-	</platform>-->
+	<!--
 	<plugin name="phonegap-plugin-push" spec="~1.10.0">
 		<variable name="SENDER_ID" value="1:315537388956:android:a1fc2536a0952d78" />
-	</plugin>
+	</plugin>-->
+	<platform name="android">
+	  <resource-file src="google-services.json" target="google-services.json" />
+	</platform>
+	<platform name="ios">
+	  <resource-file src="GoogleService-Info.plist" />
+	</platform>
+	<plugin name="phonegap-plugin-push" spec="2.0.0" />
+	
 	<plugin name="cordova-plugin-inappbrowser" spec="~1.7.1" />	
 	<icon gap:platform="webos" src="icons/ios/icon-180.png" />
 	<icon src="icons/android.jpg" gap:platform="android" gap:density="ldpi" />
