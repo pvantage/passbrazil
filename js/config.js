@@ -75,7 +75,7 @@ function categories()
 	 dataType: 'json',  
 	 data: {listcategory:1},  
 	 crossDomain: true,  
-	beforeSend: function() {
+	 beforeSend: function() {
 	 },		
 	 complete: function() {
 	 },
@@ -111,36 +111,67 @@ function categories()
    });
 		
 }
+
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
-	alert('ready');
-var push2 = PushNotification.init({
-            "android": {
-                    "senderID": "315537388956"
-            },
-            "ios": {
-                    "sound": true,
-                    "vibration": true,
-                    "badge": true
-            },
-            "windows": {}
-    });
-push2.on('registration', function(data) {
-       //console.log('registration event: ' + data.registrationId);
-		alert('registration event: ' + data.registrationId);
-
-        var oldRegId = localStorage.getItem('registrationId');
-        if (oldRegId !== data.registrationId) {
-            // Save new registration ID
-            localStorage.setItem('registrationId', data.registrationId);
-            // Post registrationId to your app server as the value has changed
-        }
-
-        /*var parentElement = document.getElementById('registration');
-        var listeningElement = parentElement.querySelector('.waiting');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');*/
-    });
+	alert(device.uuid);
+	alert(device.platform);
+	var url=siteurl+'/api/events';
+	jQuery.ajax({  
+	 type: 'POST',  
+	 url: url,  
+	 //contentType: contentType,  
+	 dataType: 'json',  
+	 data: {check_register_appids:1, device_id:device.uuid},  
+	 crossDomain: true,  
+	 beforeSend: function() {
+	 },		
+	 complete: function() {
+	 },
+	 success: function(res) {
+	   if(typeof res['device']!='undefined' && typeof res['device']['exist']!='undefined')
+	   {
+		   	if(res['device']['exist']=='no'){
+				var push2 = PushNotification.init({
+				"android": {
+						"senderID": "315537388956"
+				},
+				"ios": {
+						"sound": true,
+						"vibration": true,
+						"badge": true
+				},
+				"windows": {}
+					});
+				push2.on('registration', function(data) {
+				   
+					var oldRegId = localStorage.getItem('registrationId');
+					if (oldRegId !== data.registrationId) {
+						// Save new registration ID
+						localStorage.setItem('registrationId', data.registrationId);
+						// Post registrationId to your app server as the value has changed
+					}
+					alert('new: '+localStorage.getItem('registrationId'));
+				});
+			}
+			else
+			{
+				alert('Old: '+res['device']['exist']['reg_id']);
+			}
+	   }
+	 },  
+	 error: function(response, d, a){
+		jQuery('body .bodyoverlay').remove();
+		jQuery('body .popupbox').remove();
+		var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+		jQuery('body').append(html);
+		
+		jQuery('.okbox').click(function(){
+			jQuery('body .bodyoverlay').remove();
+			jQuery('body .popupbox').remove();
+		}); 
+		
+	 } 
+   });
+	
 };
