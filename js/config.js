@@ -111,9 +111,10 @@ function categories()
    });
 		
 }
+document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
 	alert('ready');
-var push = PushNotification.init({
+var push2 = PushNotification.init({
             "android": {
                     "senderID": "315537388956"
             },
@@ -124,7 +125,7 @@ var push = PushNotification.init({
             },
             "windows": {}
     });
-push.on('registration', function(data) {
+push2.on('registration', function(data) {
        //console.log('registration event: ' + data.registrationId);
 		alert('registration event: ' + data.registrationId);
 
