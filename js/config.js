@@ -114,94 +114,97 @@ function categories()
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
-	var url=siteurl+'/api/events';
-	jQuery.ajax({  
-	 type: 'POST',  
-	 url: url,  
-	 //contentType: contentType,  
-	 dataType: 'json',  
-	 data: {check_register_appids:1, device_id:device.uuid},  
-	 crossDomain: true,  
-	 beforeSend: function() {
-	 },		
-	 complete: function() {
-	 },
-	 success: function(res) {
-	   if(typeof res['device']!='undefined' && typeof res['device']['exist']!='undefined')
-	   {
-		   	if(res['device']['exist']=='no'){
-				var push2 = PushNotification.init({
-				"android": {
-						"senderID": "315537388956"
-				},
-				"ios": {
-						"sound": true,
-						"vibration": true,
-						"badge": true
-				},
-				"windows": {}
-					});
-				push2.on('registration', function(data) {
-				   var registerid=data.registrationId;
-					
-					
-					jQuery.ajax({  
-						 type: 'POST',  
-						 url: url,  
-						 //contentType: contentType,  
-						 dataType: 'json',  
-						 data: {register_newapp_id:1, device_id:device.uuid,os_type:device.uuid.platform, reg_id:registerid},  
-						 crossDomain: true,  
-						 beforeSend: function() {
-						 },		
-						 complete: function() {
-						 },
-						 success: function(res) {
-						   if(typeof res['adddevice']!='undefined' && typeof res['adddevice']['success']!='undefined')
-						   {
-								var oldRegId = localStorage.getItem('registrationId');
-								if (oldRegId !== registerid) {
-									// Save new registration ID
-									localStorage.setItem('registrationId', registerid);
-									// Post registrationId to your app server as the value has changed
-								}
-								alert('new: '+localStorage.getItem('registrationId'));
-						   }
-						 },  
-						 error: function(response, d, a){
-							jQuery('body .bodyoverlay').remove();
-							jQuery('body .popupbox').remove();
-							var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
-							jQuery('body').append(html);
-							
-							jQuery('.okbox').click(function(){
+	if(typeof localStorage.getItem('registrationId')=='undefined' || localStorage.getItem('registrationId')=='')
+	{
+		var url=siteurl+'/api/events';
+		jQuery.ajax({  
+		 type: 'POST',  
+		 url: url,  
+		 //contentType: contentType,  
+		 dataType: 'json',  
+		 data: {check_register_appids:1, device_id:device.uuid},  
+		 crossDomain: true,  
+		 beforeSend: function() {
+		 },		
+		 complete: function() {
+		 },
+		 success: function(res) {
+		   if(typeof res['device']!='undefined' && typeof res['device']['exist']!='undefined')
+		   {
+				if(res['device']['exist']=='no'){
+					var push2 = PushNotification.init({
+					"android": {
+							"senderID": "315537388956"
+					},
+					"ios": {
+							"sound": true,
+							"vibration": true,
+							"badge": true
+					},
+					"windows": {}
+						});
+					push2.on('registration', function(data) {
+					   var registerid=data.registrationId;
+						
+						
+						jQuery.ajax({  
+							 type: 'POST',  
+							 url: url,  
+							 //contentType: contentType,  
+							 dataType: 'json',  
+							 data: {register_newapp_id:1, device_id:device.uuid,os_type:device.platform, reg_id:registerid},  
+							 crossDomain: true,  
+							 beforeSend: function() {
+							 },		
+							 complete: function() {
+							 },
+							 success: function(res) {
+							   if(typeof res['adddevice']!='undefined' && typeof res['adddevice']['success']!='undefined')
+							   {
+									var oldRegId = localStorage.getItem('registrationId');
+									if (oldRegId !== registerid) {
+										// Save new registration ID
+										localStorage.setItem('registrationId', registerid);
+										// Post registrationId to your app server as the value has changed
+									}
+									//alert('new: '+localStorage.getItem('registrationId'));
+							   }
+							 },  
+							 error: function(response, d, a){
 								jQuery('body .bodyoverlay').remove();
 								jQuery('body .popupbox').remove();
-							}); 
-							
-						 } 
-					   });
-					
-				});
-			}
-			else
-			{
-				alert('Old: '+res['device']['exist']['reg_id']);
-			}
-	   }
-	 },  
-	 error: function(response, d, a){
-		jQuery('body .bodyoverlay').remove();
-		jQuery('body .popupbox').remove();
-		var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
-		jQuery('body').append(html);
-		
-		jQuery('.okbox').click(function(){
+								var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+								jQuery('body').append(html);
+								
+								jQuery('.okbox').click(function(){
+									jQuery('body .bodyoverlay').remove();
+									jQuery('body .popupbox').remove();
+								}); 
+								
+							 } 
+						   });
+						
+					});
+				}
+				else
+				{
+					localStorage.setItem('registrationId', res['device']['exist']['reg_id']);
+					//alert('Old: '+res['device']['exist']['reg_id']);
+				}
+		   }
+		 },  
+		 error: function(response, d, a){
 			jQuery('body .bodyoverlay').remove();
 			jQuery('body .popupbox').remove();
-		}); 
-		
-	 } 
-   });
-	
+			var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+			jQuery('body').append(html);
+			
+			jQuery('.okbox').click(function(){
+				jQuery('body .bodyoverlay').remove();
+				jQuery('body .popupbox').remove();
+			}); 
+			
+		 } 
+	   });
+	}
 };
