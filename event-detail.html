@@ -108,7 +108,7 @@ jQuery(document).ready(function(){
 					$('.owl-carousel').owlCarousel({
 						loop:true,
 						autoplay:true,
-						autoplayTimeout:1500,
+						autoplayTimeout:900,
     					autoplayHoverPause:true,
 						margin:10,
 						nav:false,
@@ -138,7 +138,7 @@ jQuery(document).ready(function(){
 	 error: function(response, d, a){
 		jQuery('body .bodyoverlay').remove();
 		jQuery('body .popupbox').remove();
-		var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="../images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+		var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
 		jQuery('body').append(html);
 		
 		jQuery('.okbox').click(function(){
@@ -195,7 +195,7 @@ jQuery(document).ready(function(){
 			 error: function(response, d, a){
 				jQuery('body .bodyoverlay').remove();
 				jQuery('body .popupbox').remove();
-				var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="../images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+				var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
 				jQuery('body').append(html);
 				
 				jQuery('.okbox').click(function(){
