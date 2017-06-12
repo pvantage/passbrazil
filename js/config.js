@@ -114,8 +114,6 @@ function categories()
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
-	alert(device.uuid);
-	alert(device.platform);
 	var url=siteurl+'/api/events';
 	jQuery.ajax({  
 	 type: 'POST',  
@@ -144,14 +142,46 @@ function onDeviceReady(){
 				"windows": {}
 					});
 				push2.on('registration', function(data) {
-				   
-					var oldRegId = localStorage.getItem('registrationId');
-					if (oldRegId !== data.registrationId) {
-						// Save new registration ID
-						localStorage.setItem('registrationId', data.registrationId);
-						// Post registrationId to your app server as the value has changed
-					}
-					alert('new: '+localStorage.getItem('registrationId'));
+				   var registerid=data.registrationId;
+					
+					
+					jQuery.ajax({  
+						 type: 'POST',  
+						 url: url,  
+						 //contentType: contentType,  
+						 dataType: 'json',  
+						 data: {register_newapp_id:1, device_id:device.uuid,os_type:device.uuid.platform, reg_id:registerid},  
+						 crossDomain: true,  
+						 beforeSend: function() {
+						 },		
+						 complete: function() {
+						 },
+						 success: function(res) {
+						   if(typeof res['adddevice']!='undefined' && typeof res['adddevice']['success']!='undefined')
+						   {
+								var oldRegId = localStorage.getItem('registrationId');
+								if (oldRegId !== registerid) {
+									// Save new registration ID
+									localStorage.setItem('registrationId', registerid);
+									// Post registrationId to your app server as the value has changed
+								}
+								alert('new: '+localStorage.getItem('registrationId'));
+						   }
+						 },  
+						 error: function(response, d, a){
+							jQuery('body .bodyoverlay').remove();
+							jQuery('body .popupbox').remove();
+							var html='<div class="bodyoverlay"></div><div class="popupbox errorbox"><div class="popupimg"><img src="images/error.png" /></div><h1 class="success">ERROR</h1><h1>Server Error.</h1><button class="okbox">OK</button></div>';
+							jQuery('body').append(html);
+							
+							jQuery('.okbox').click(function(){
+								jQuery('body .bodyoverlay').remove();
+								jQuery('body .popupbox').remove();
+							}); 
+							
+						 } 
+					   });
+					
 				});
 			}
 			else
