@@ -114,8 +114,7 @@ function categories()
 
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
-	if(typeof localStorage.getItem('registrationId')=='undefined' || localStorage.getItem('registrationId')=='')
-	{
+	
 		var url=siteurl+'/api/events';
 		jQuery.ajax({  
 		 type: 'POST',  
@@ -206,5 +205,5 @@ function onDeviceReady(){
 			
 		 } 
 	   });
-	}
+	
 };
