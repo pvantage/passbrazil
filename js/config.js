@@ -132,16 +132,16 @@ function onDeviceReady(){
 		   {
 				if(res['device']['exist']=='no'){
 					var push2 = PushNotification.init({
-					"android": {
-							"senderID": "315537388956"
-					},
-					"ios": {
-							"sound": true,
-							"vibration": true,
-							"badge": true
-					},
-					"windows": {}
-						});
+							"android": {
+									"senderID": "315537388956"
+							},
+							"ios": {
+									"sound": true,
+									"vibration": true,
+									"badge": true
+							},
+							"windows": {}
+					});
 					push2.on('registration', function(data) {
 					   var registerid=data.registrationId;
 						

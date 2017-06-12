@@ -76,13 +76,13 @@ jQuery(document).ready(function(){
 	   {
 			var html='';
 			jQuery(res['events']['detail']).each(function(i){
-				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horário:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereço:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"><a href="'+res['events']['detail'][i]['site_url']+'/events/gmap?address='+res['events']['detail'][i]['venue']+'" class="venuedetail"> '+res['events']['detail'][i]['venue']+'</a></span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><a href="javascript:;"><span class="price"><img src="images/appicon.png" alt=""> Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</a></li></ul></div>';
+				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horário:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereço:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"><a href="'+res['events']['detail'][i]['site_url']+'/events/gmap?address='+res['events']['detail'][i]['venue']+'" class="venuedetail"> '+res['events']['detail'][i]['venue']+'</a></span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><span class="price">Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</li><li class="compar"><span>COMPARTILHAR</span></li></ul></div>';
 			});
 			if(typeof res['events']['detail'][0]['ticket_url']!='undefined' && res['events']['detail'][0]['ticket_url']!=''){
-				html+='<div class="event-spnsr"><h2><a href="'+res['events']['detail'][0]['ticket_url']+'">comprar ingresso</a></h2>';
+				html+='<div class="event-spnsr"><h2><a href="'+res['events']['detail'][0]['ticket_url']+'"><img src="images/register.png" /></a></h2>';
 			}
 			else{
-				html+='<div class="event-spnsr"><h2>comprar ingresso</h2>';
+				html+='<div class="event-spnsr"><h2><img src="images/register.png" /></h2>';
 			}
 			if(typeof res['events']['sponsors']!='undefined')
 	   		{
@@ -97,7 +97,30 @@ jQuery(document).ready(function(){
 			if(typeof res['events']['detail'][0]['poster']!='undefined' && res['events']['detail'][0]['poster']!=''){
 				html+='<div class="event-poster"><img src="'+res['events']['detail'][0]['poster']+'" alt=""></div>';
 			}
+			if(typeof res['events']['detail'][0]['relatedevents']!='undefined' && typeof res['events']['detail'][0]['relatedevents']['events']!='undefined')
+		   {
+				var k=1;
+				var related_events='';
+				jQuery(res['events']['detail'][0]['relatedevents']['events']).each(function(j){
+					var evt='<table class="table"><tr><td class="event-img" colspan="2"><a href="event-detail.html?event_id='+res['events']['detail'][0]['relatedevents']['events'][j]['id']+'"><img src="'+res['events']['detail'][0]['relatedevents']['events'][j]['image']+'" alt=""></a></td></tr><tr><td width="60" class="event-date"><a href="event-detail.html?event_id='+res['events']['detail'][0]['relatedevents']['events'][j]['id']+'">'+res['events']['detail'][0]['relatedevents']['events'][j]['starttime']+'</a></td><td class="event-detail"><a href="event-detail.html?event_id='+res['events']['detail'][0]['relatedevents']['events'][j]['id']+'"><span class="event-name">'+res['events']['detail'][0]['relatedevents']['events'][j]['title']+'</span> <span class="event-loc">'+res['events']['detail'][0]['relatedevents']['events'][j]['address']+'</span></a></td></tr></table>';
+					if(k%2=='1')
+					{
+						related_events+='<div class="event-grid"><ul><li>'+evt+'</li>';
+						if(res['events'].length==k){
+							related_events+='</ul></div>';
+						}
+					}
+					else
+					{
+						related_events+='<li>'+evt+'</li></ul></div>';
+					}
+					k++;	
+				});
+				html+='<div class="events-lists">'+related_events+'</div>';
+		   }
 			jQuery('.event-detail-wrap').html(html);
+			
+			
 			jQuery('a.venuedetail').click(function(){
 				cordova.InAppBrowser.open(jQuery(this).attr('href'),'_self','location=yes');
 				return false;

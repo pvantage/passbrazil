@@ -130,24 +130,55 @@ h2.event-title{
 .event-info-detail .loc-name{font-family: 'pantonbold'; color:#666666;}
 .blue-color{ color:#1448a9!important;}
 .event-price-list{
-background-color:#e0e0e0;
+background:#e0e0e0 url(../images/ticket-icon.png) no-repeat 15px 5px;
 border-top:1px solid #acacac;
 text-align:center;	
+font-family: 'pantonbold';
+padding-left:25px;
+text-transform:uppercase;
+overflow:hidden;
 }
 .event-price-list ul{ padding:0px; margin:0px; list-style:none;}
-.event-price-list ul li{ display:inline-block; vertical-align:top; clear:#282828; font-size:18px; padding:10px 0px 10px 10px; text-align:left; width:100%;}
+.event-price-list ul li{ display:inline-block; vertical-align:top; clear:#282828; font-size:12px; padding:10px 0px 10px 10px; text-align:left;}
 .event-price-list img{max-height:30px; margin-top:-10px; margin-right:5px;}
 .event-price-list ul li.vip{ background-color:#efefef; border-left:1px solid #fff; border-right:1px solid #fff;}
 .event-price-list ul li a{ color:#282828; font-weight:bold;}
-.event-price-list .price{ color:#186e18; font-family: 'pantonbold'; }
+.event-price-list .price{ color:#282828; font-family: 'pantonregular'; }
+
+.event-price-list ul li.compar{
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefe+0,c7c7c7+100 */
+background: #fefefe; /* Old browsers */
+background: -moz-linear-gradient(top, #fefefe 0%, #c7c7c7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #fefefe 0%,#c7c7c7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #fefefe 0%,#c7c7c7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#c7c7c7',GradientType=0 ); /* IE6-9 */
+position:relative;
+z-index:10;
+box-shadow:-5px 0 5px 1px rgba(170, 170, 170,0.7);
+margin-left:5px;	
+}
+.event-price-list ul li.compar:before{
+position:absolute;
+left:0px;
+top:0px;
+width:500px;
+content:"";
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#fefefe+0,c7c7c7+100 */
+background: #fefefe; /* Old browsers */
+background: -moz-linear-gradient(top, #fefefe 0%, #c7c7c7 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #fefefe 0%,#c7c7c7 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #fefefe 0%,#c7c7c7 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#c7c7c7',GradientType=0 ); /* IE6-9 */
+height:47px;
+z-index:-1;
+
+	
+}
 .event-spnsr h2{
 font-family: 'pantonbold';
-font-size:25px;
 text-transform:uppercase;
-background-color:#238c23;
-padding:15px 10px;
+padding:0px;
 text-align:center;
-color:#fff;
 margin:0px;	
 /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#166a16+0,238d23+100 */
 background: #166a16; /* Old browsers */
@@ -311,3 +342,7 @@ font-family: 'pantonbold';
 }
 .popupbox.errorbox h1{color:#FF0000;}
 .bodyoverlay{position:fixed; height:100%; width:100%; background:#000000; opacity:0.8; z-index:99999; top:0px; left:0px; display:block;}
+
+ @media only screen and (max-width: 350px) and   (max-width: 650px) {
+	 .event-price-list ul li{ font-size:14px;}
+ }
