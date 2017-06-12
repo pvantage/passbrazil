@@ -1,5 +1,6 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 function onDeviceReady(){
+	alert('ready');
 var push = PushNotification.init({
             "android": {
                     "senderID": "315537388956"
