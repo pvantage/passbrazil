@@ -65,7 +65,18 @@ jQuery(document).ready(function(){
 		 complete: function() {
 			//alert('finish');						
 		 },
-		 success: function(res) {  
+		 success: function(res) { 
+		 	var ads='';
+			if(typeof res['ads']!='undefined')
+		   	{
+				if(res['ads'][0]['url']!=''){
+					ads+='<div class="event-banner"><a href="'+res['ads'][0]['url']+'"><img src="'+res['ads'][0]['banner']+'" alt=""></a> </div>';
+				}
+				else{
+					ads+='<div class="event-banner"><img src="'+res['ads'][0]['banner']+'" alt=""></div>';
+				}
+		   		
+		   	}
 		   if(typeof res['events']['eventlist']!='undefined')
 		   {
 				var html='';
@@ -74,7 +85,7 @@ jQuery(document).ready(function(){
 					var evt='<table class="table"><tr><td class="event-img" colspan="2"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'"><img src="'+res['events']['eventlist'][i]['image']+'" alt=""></a></td></tr><tr><td width="60" class="event-date"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'">'+res['events']['eventlist'][i]['starttime']+'</a></td><td class="event-detail"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'"><span class="event-name">'+res['events']['eventlist'][i]['title']+'</span> <span class="event-loc">'+res['events']['eventlist'][i]['address']+'</span></a></td></tr></table>';
 					if(k==1)	
 					{
-						html+='<div class="event-banner"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'"><img src="'+res['events']['eventlist'][i]['image']+'" alt=""></a> </div><table class="table"><tr><td width="70" class="event-date"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'">'+res['events']['eventlist'][i]['starttime']+'</a></td><td class="event-detail"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'"><span class="event-name">'+res['events']['eventlist'][i]['title']+'</span> <span class="event-loc">'+res['events']['eventlist'][i]['address']+'</span></a></td></tr></table>';
+						html+='<div class="event-banner"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'"><img src="'+res['events']['eventlist'][i]['image']+'" alt=""></a> </div>'+ads+'<table class="table"><tr><td width="70" class="event-date"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'">'+res['events']['eventlist'][i]['starttime']+'</a></td><td class="event-detail"><a href="event-detail.html?event_id='+res['events']['eventlist'][i]['id']+'"><span class="event-name">'+res['events']['eventlist'][i]['title']+'</span> <span class="event-loc">'+res['events']['eventlist'][i]['address']+'</span></a></td></tr></table>';
 					}
 					else if(k==2 || k==4 || k==6 || k==8)
 					{
