@@ -44,8 +44,7 @@
 <script type="text/javascript">
 document.addEventListener("deviceready", onDeviceReady2, false);
 function onDeviceReady2(){
-	if(typeof device!='undefined')
-	alert(device.platform);
+	
 	
 	
 	jQuery( document ).on( "mobileinit", function() {
@@ -76,10 +75,17 @@ function onDeviceReady2(){
 	 },
 	 success: function(res) {  
 	   if(typeof res['events']!='undefined')
-	   {
+	   {	
+	   		var applink='';	
+	   		if(typeof device!='undefined'){
+				if(typeof device.platform!='undefined' && device.platform=='Android'){
+					applink='https://play.google.com/store/apps/details?id=passbrazil.com&hl=en';
+				}
+			}
 			var html='';
 			jQuery(res['events']['detail']).each(function(i){
-				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horário:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereço:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"><a href="'+res['events']['detail'][i]['site_url']+'/events/gmap?address='+res['events']['detail'][i]['venue']+'" class="venuedetail"> '+res['events']['detail'][i]['venue']+'</a></span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><span class="price">Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</li><li class="compar"><span onclick="window.plugins.socialsharing.share(\'Oi, achei um evento super legal!\', null, null, \'https://play.google.com/store/apps/details?id=passbrazil.com&hl=en\')">COMPARTILHAR</span></li></ul></div>';
+				html+='<div class="event-banner"><img src="'+res['events']['detail'][i]['image']+'" alt=""><div class="event-date-meta">'+res['events']['detail'][i]['starttime']+'</div></div><h2 class="event-title">'+res['events']['detail'][i]['title']+'</h2><div class="event-info-detail"> <span class="loc-name">Quando:</span> '+res['events']['detail'][i]['showday']+'<br><span class="loc-name">Horário:</span> '+res['events']['detail'][i]['showtime']+' EDT <br><span class="loc-name">Endereço:</span> '+res['events']['detail'][i]['address']+' <br><span class="loc-name">Cidade:</span> '+res['events']['detail'][i]['city']+' <br><span class="loc-name blue-color">Local:</span> <span class="blue-color"><a href="'+res['events']['detail'][i]['site_url']+'/events/gmap?address='+res['events']['detail'][i]['venue']+'" class="venuedetail"> '+res['events']['detail'][i]['venue']+'</a></span><br><span class="event-detail"> '+res['events']['detail'][i]['description']+'</span> </div><div class="event-price-list"><ul><li><span class="price">Ingressos a Partir de</span> '+res['events']['detail'][i]['price_pista']+'</li><li class="compar"><span onclick="window.plugins.socialsharing.share(\'Oi, achei um evento super legal!\', null, null, '+applink+')">COMPARTILHAR</span></li></ul></div>';
+				
 			});
 			if(typeof res['events']['detail'][0]['ticket_url']!='undefined' && res['events']['detail'][0]['ticket_url']!=''){
 				html+='<div class="event-spnsr"><h2><a href="'+res['events']['detail'][0]['ticket_url']+'"><img src="images/register.png" /></a></h2>';
