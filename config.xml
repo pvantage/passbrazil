@@ -49,7 +49,14 @@
 	<gap:splash src="res/icon/ios/screen-iphone-portrait.png" gap:platform="ios" width="180" height="180" />
 	<icon src="res/icon/ios/icon-40@3x.png" platform="ios" width="120" height="120" />
 	<icon src="res/icon/icon-60@3x.png" platform="ios" width="180" height="180" />
+	<icon src="icon.png" platform="ios" width="57" height="57" />
+	<icon src="icon@2x.png" platform="ios" width="114" height="114" />
+	
+	<!-- iPhone 6 / 6+ -->
+	<icon src="icon-60@3x.png" platform="ios" width="180" height="180" />
 	<icon src="icon.png" />
+	<splash src="splash.png" />
+	
 	<plugin name="cordova-plugin-whitelist" spec="~1.3.2" />
     <access origin="*"/>
     <!-- Added the following intents to support the removal of whitelist code from base cordova to a plugin -->
