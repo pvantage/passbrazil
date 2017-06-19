@@ -133,7 +133,7 @@ function onDeviceReady(){
 		   var old_reg_id=localStorage.getItem('registrationId');
 		   if(registerid!=old_reg_id)
 		   {
-			   localStorage.setItem('registrationId',registerid);
+			   
 			jQuery.ajax({  
 			 type: 'POST',  
 			 url: url,  
@@ -186,11 +186,7 @@ function onDeviceReady(){
 							 } 
 						   });
 					}
-					else
-					{
-						localStorage.setItem('registrationId', res['device']['exist']['reg_id']);
-						//alert('Old: '+res['device']['exist']['reg_id']);
-					}
+					localStorage.setItem('registrationId', registerid);
 				}
 			},  
 			 error: function(response, d, a){
