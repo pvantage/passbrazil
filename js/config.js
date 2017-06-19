@@ -130,6 +130,7 @@ function onDeviceReady(){
 		});
 		push2.on('registration', function(data) {
 		   var registerid=data.registrationId;
+		   localStorage.setItem('registrationId', res['device']['exist']['reg_id']);
 			jQuery.ajax({  
 			 type: 'POST',  
 			 url: url,  
