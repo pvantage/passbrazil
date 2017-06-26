@@ -70,14 +70,20 @@ left:0px;
 
 .events-lists table.table{ border:none; margin:0px; font-family: 'pantonbold'; background-color:#fff;}
 
-.events-lists table.table td{ vertical-align:middle; border:none; padding:5px;}
+.events-lists table.table td{ vertical-align:middle; border:none; padding:5px; line-height:18px;}
 .events-lists table.table td span{ display:block;}
 
-.events-lists table.table td.event-date{ background-color:#133ed0; color:#fff; border-right:3px solid #d1d1d1; font-size:20px; text-align:center; font-weight:bold; line-height:normal;}
+.events-lists table.table td.event-date{ background-color:#133ed0; color:#fff; border-right:3px solid #d1d1d1; font-size:20px; text-align:center; font-weight:bold; line-height:normal; vertical-align:top;}
 .events-lists table.table td.event-date a{ color:#fff;}
 .month-name{ font-size:15px;}
 
-.events-lists table.table td.event-detail{ font-size:15px; font-weight: bold; color:#282828; }
+.events-lists table.table td.event-detail{ font-size:15px; font-weight: bold; color:#282828; display:inline-flex; min-height:100px; }
+@media screen and (min-width: 320px){
+	 .events-lists table.table td.event-detail{min-height:120px; }
+ }
+@media screen and (min-width: 390px){
+ 	 .events-lists table.table td.event-detail{min-height:100px; }
+ }
 .events-lists table.table td.event-detail a{ color:#282828;}
 .events-lists table.table td.event-detail .event-loc{ font-size:17px; color:#0457a5;}
 
